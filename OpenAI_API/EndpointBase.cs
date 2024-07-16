@@ -60,16 +60,7 @@ namespace OpenAI_API
 				throw new AuthenticationException("You must provide API authentication.  Please refer to https://github.com/OkGoDoIt/OpenAI-API-dotnet#authentication for details.");
 			}
 
-			HttpClient client;
-			var clientFactory = _Api.HttpClientFactory;
-			if (clientFactory != null)
-			{
-				client = clientFactory.CreateClient();
-			}
-			else
-			{
-				client = new HttpClient();
-			}
+			var client = new HttpClient();
 
 			client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _Api.Auth.ApiKey);
 			// Further authentication-header used for Azure openAI service
